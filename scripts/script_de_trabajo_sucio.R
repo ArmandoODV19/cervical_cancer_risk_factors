@@ -130,4 +130,6 @@ colnames(data) <- c('mean_corpuscular_volume', 'alkaline_phosphotase',
                     'gamma-glutamyl transpeptidase',
                     'alcoholic_beverages_per_day', 'bupa_field')
 
+hepatico_df <- data %>%
+  select(-bupa_field)
 
