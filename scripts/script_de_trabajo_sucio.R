@@ -34,6 +34,8 @@ cancer_data <- na.omit(cancer_data)
 
 correlations <- cor(cancer_data)
 
+# cambiar nombre de columna y filas
+
 corrplot(correlations, method = 'circle', tl.col = 'black')
 
 # generando modelo
