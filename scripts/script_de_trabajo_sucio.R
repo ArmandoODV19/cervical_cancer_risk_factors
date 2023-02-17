@@ -126,10 +126,53 @@ data <- read.table('raw_data/bupa.data', sep = ',')
 nombre_bupa <- read.table('raw_data/bupa.names', sep = ',')
 
 colnames(data) <- c('mean_corpuscular_volume', 'alkaline_phosphotase',
-                    'alanine_aminotransferase', 'aspartate aminotransferase',
-                    'gamma-glutamyl transpeptidase',
+                    'alanine_aminotransferase', 'aspartate_aminotransferase',
+                    'gamma_glutamyl_transpeptidase',
                     'alcoholic_beverages_per_day', 'bupa_field')
 
 hepatico_df <- data %>%
   select(-bupa_field)
+
+### modelo lineal multivariable tomando 'alcoholic_beverages_per_day'
+# como variable dependiente
+
+attach(hepatico_df)
+modelo_multiva <- lm(alcoholic_beverages_per_day~ gamma_glutamyl_transpeptidase + alanine_aminotransferase + alkaline_phosphotase + aspartate_aminotransferase,
+                     data = hepatico_df)
+summary(modelo_multiva)
+confint(modelo_multiva)
+
+# hipotesis: las personas que consumen igual o menos de 1 bebida tienen
+# niveles menores niveles de gamma_glutamyl_transpeptidase
+# en comparacion a a quellos que toman mas de 1 bebida
+
+
+# generando poblaciones
+
+sin_bebidas <-  hepatico_df %>%
+  filter(alcoholic_beverages_per_day <= 1)
+
+con_bebida <- hepatico_df %>%
+  filter(alcoholic_beverages_per_day > 1)
+
+### hciendo estadistica descriptiva de gamma_glutamyl_transpeptidase
+
+# media
+sin_bebidas %>% summarise(promedio = mean(gamma_glutamyl_transpeptidase))
+
+# desviacion estandar
+sin_bebidas %>% summarise(de = sd(gamma_glutamyl_transpeptidase))
+
+# varianza
+sin_bebidas %>% summarise(varianza = var(gamma_glutamyl_transpeptidase))
+
+
+# media
+con_bebida %>% summarise(promedio = mean(gamma_glutamyl_transpeptidase))
+
+# desviacion estandar
+con_bebida %>% summarise(de = sd(gamma_glutamyl_transpeptidase))
+
+# varianza
+con_bebida %>% summarise(varianza = var(gamma_glutamyl_transpeptidase))
 
