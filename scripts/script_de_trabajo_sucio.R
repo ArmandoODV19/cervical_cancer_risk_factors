@@ -176,3 +176,15 @@ con_bebida %>% summarise(de = sd(gamma_glutamyl_transpeptidase))
 # varianza
 con_bebida %>% summarise(varianza = var(gamma_glutamyl_transpeptidase))
 
+
+#### prueba de hipotesis
+
+t.test(x = sin_bebidas$gamma_glutamyl_transpeptidase,
+       y = con_bebida$gamma_glutamyl_transpeptidase,
+       var.equal = FALSE, alternative = 'less',
+       conf.level = 0.95)
+
+
+
+
+
