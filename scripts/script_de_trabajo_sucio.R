@@ -22,7 +22,7 @@ glimpse(raw_data)
 # seleccionando variables de interés
 
 cancer_data <- raw_data %>%
-  select(age, number_of_sexual_partners, first_sexual_intercorse,
+  select(age, number_of_sexual_partners,
          smokes_years, hormonal_anticonceptives, stds_hepatitis_b,
          stds_condylomatosis, dx_hpv, stds_genital_herpes, stds_syphilis,
          stds_hiv, stds_mulluscum, dx_cin, dx_cancer)
@@ -34,7 +34,23 @@ cancer_data <- na.omit(cancer_data)
 
 correlations <- cor(cancer_data)
 
-# cambiar nombre de columna y filas
+# cambiar nombre de columna y filas a español
+
+colnames(correlations) <- c('edad', 'numero_de_parejas_sexuales',
+                            'tabaquismo_años', 'uso_anticonceptivos',
+                            'hepatitis_b', 'condilomatosis', 'vph',
+                            'herpes_genital', 'sifilis', 'vih',
+                            'molusco_contagioso', 'celulas_anormales',
+                            'cancer_cervicouterino')
+
+rownames(correlations) <- c('edad', 'numero_de_parejas_sexuales',
+                            'tabaquismo_años', 'uso_anticonceptivos',
+                            'hepatitis_b', 'condilomatosis', 'vph',
+                            'herpes_genital', 'sifilis', 'vih',
+                            'molusco_contagioso', 'celulas_anormales',
+                            'cancer_cervicouterino')
+
+
 
 corrplot(correlations, method = 'circle', tl.col = 'black')
 
