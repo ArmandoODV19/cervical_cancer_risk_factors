@@ -106,3 +106,28 @@ var_sano <- sano_vph %>%
 t.test(x = dx_vph$dx_cancer, y = sano_vph$dx_cancer,
        var.equal = FALSE, alternative = 'greater',
        conf.level = 0.95)
+
+
+
+
+
+
+
+
+#####################
+#####################
+#####################
+
+
+## evaluacion enfermedades hepaticas
+
+
+data <- read.table('raw_data/bupa.data', sep = ',')
+nombre_bupa <- read.table('raw_data/bupa.names', sep = ',')
+
+colnames(data) <- c('mean_corpuscular_volume', 'alkaline_phosphotase',
+                    'alanine_aminotransferase', 'aspartate aminotransferase',
+                    'gamma-glutamyl transpeptidase',
+                    'alcoholic_beverages_per_day', 'bupa_field')
+
+
