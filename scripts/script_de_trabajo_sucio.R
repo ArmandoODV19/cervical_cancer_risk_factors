@@ -23,8 +23,27 @@ glimpse(raw_data)
 
 cancer_data <- raw_data %>%
   select(age, number_of_sexual_partners, first_sexual_intercorse,
-         smokes, smokes_years, smokes_packs_year, hormonal_anticonceptives,
-         dx_cancer)
+         smokes_years, hormonal_anticonceptives, stds_hepatitis_b,
+         stds_condylomatosis, dx_hpv, stds_genital_herpes, stds_syphilis,
+         stds_hiv, stds_mulluscum, dx_cin, dx_cancer)
+
+cancer_data <- na.omit(cancer_data)
 
 # realizando grafico de correlacion
+
+
+correlations <- cor(cancer_data)
+
+corrplot(correlations, method = 'circle', tl.col = 'black')
+
+# generando modelo
+
+attach(cancer_data)
+
+modelo_lineal <- lm(dx_hpv~dx_cancer, data = cancer_data)
+summary(modelo_lineal) # y = 0.001437 + 0.880916 x
+confint(modelo_lineal)
+
+# obteniendo p value
+
 
