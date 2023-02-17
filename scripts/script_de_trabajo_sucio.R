@@ -46,6 +46,11 @@ modelo_lineal <- lm(dx_hpv~dx_cancer, data = cancer_data)
 summary(modelo_lineal) # y = 0.001437 + 0.880916 x
 confint(modelo_lineal)
 
-# obteniendo p value
+# obteniedo grupo con diagnostico de vph y sin diagnostico
 
+dx_vph <- cancer_data %>%
+  filter(dx_hpv == 1)
+
+sano_vph <- cancer_data %>%
+  filter(dx_hpv == 0)
 
