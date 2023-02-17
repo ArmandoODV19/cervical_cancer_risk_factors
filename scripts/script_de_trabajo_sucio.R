@@ -61,7 +61,7 @@ sano_vph <- cancer_data %>%
 
 promedio_dx <- dx_vph %>%
   select(dx_cancer) %>%
-  summarise(promedio = sum(dx_cancer)/16)
+  summarise(promedio = sum(dx_cancer)/nrow(dx_vph))
 
 sd_dx <- dx_vph %>%
   select(dx_cancer) %>%
@@ -75,7 +75,7 @@ var_dx <- dx_vph %>%
 
 promedio_sano <- sano_vph %>%
   select(dx_cancer) %>%
-  summarise(promedio = sum(dx_cancer)/697)
+  summarise(promedio = sum(dx_cancer)/nrow(sano_vph))
 
 sd_sano <- sano_vph %>%
   select(dx_cancer) %>%
@@ -84,3 +84,9 @@ sd_sano <- sano_vph %>%
 var_sano <- sano_vph %>%
   select(dx_cancer) %>%
   summarise(varianza=var(dx_cancer))
+
+# prueba de hipotesis
+
+t.test(x = dx_vph$dx_cancer, y = sano_vph$dx_cancer,
+       var.equal = FALSE, alternative = 'greater',
+       conf.level = 0.95)
