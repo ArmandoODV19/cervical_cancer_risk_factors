@@ -58,8 +58,8 @@ corrplot(correlations, method = 'circle', tl.col = 'black')
 
 attach(cancer_data)
 
-modelo_lineal <- lm(dx_hpv~dx_cancer, data = cancer_data)
-summary(modelo_lineal) # y = 0.001437 + 0.880916 x
+modelo_lineal <- lm(dx_cancer~dx_hpv, data = cancer_data)
+summary(modelo_lineal) # y = 0.002849 + 0.934651 x
 confint(modelo_lineal)
 
 # obteniedo grupo con diagnostico de vph y sin diagnostico
