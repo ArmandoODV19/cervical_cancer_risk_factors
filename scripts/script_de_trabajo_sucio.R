@@ -54,3 +54,33 @@ dx_vph <- cancer_data %>%
 sano_vph <- cancer_data %>%
   filter(dx_hpv == 0)
 
+
+### haciendo estadistica descriptiva
+
+# dx de vph
+
+promedio_dx <- dx_vph %>%
+  select(dx_cancer) %>%
+  summarise(promedio = sum(dx_cancer)/16)
+
+sd_dx <- dx_vph %>%
+  select(dx_cancer) %>%
+  summarise(desviacion_estandar=sd(dx_cancer))
+
+var_dx <- dx_vph %>%
+  select(dx_cancer) %>%
+  summarise(varianza=var(dx_cancer))
+
+# sanos
+
+promedio_sano <- sano_vph %>%
+  select(dx_cancer) %>%
+  summarise(promedio = sum(dx_cancer)/697)
+
+sd_sano <- sano_vph %>%
+  select(dx_cancer) %>%
+  summarise(desviacion_estandar=sd(dx_cancer))
+
+var_sano <- sano_vph %>%
+  select(dx_cancer) %>%
+  summarise(varianza=var(dx_cancer))
