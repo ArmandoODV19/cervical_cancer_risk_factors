@@ -75,15 +75,15 @@ sano_vph <- cancer_data %>%
 
 # dx de vph
 
-promedio_dx <- dx_vph %>%
+dx_vph %>%
   select(dx_cancer) %>%
   summarise(promedio = sum(dx_cancer)/nrow(dx_vph))
 
-sd_dx <- dx_vph %>%
+dx_vph %>%
   select(dx_cancer) %>%
   summarise(desviacion_estandar=sd(dx_cancer))
 
-var_dx <- dx_vph %>%
+dx_vph %>%
   select(dx_cancer) %>%
   summarise(varianza=var(dx_cancer))
 
