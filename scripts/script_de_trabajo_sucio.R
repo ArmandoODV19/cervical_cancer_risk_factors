@@ -181,7 +181,7 @@ con_bebida %>% summarise(varianza = var(gamma_glutamyl_transpeptidase))
 
 t.test(x = sin_bebidas$gamma_glutamyl_transpeptidase,
        y = con_bebida$gamma_glutamyl_transpeptidase,
-       var.equal = FALSE, alternative = 'two.sided',
+       var.equal = FALSE, alternative = 'less',
        conf.level = 0.95)
 
 
