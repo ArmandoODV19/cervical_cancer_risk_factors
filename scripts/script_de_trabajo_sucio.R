@@ -189,6 +189,11 @@ t.test(x = sin_bebidas$gamma_glutamyl_transpeptidase,
        conf.level = 0.95)
 
 
+# prueba de hipotesis con z
 
+z.test(x = sin_bebidas$gamma_glutamyl_transpeptidase,
+       y = con_bebida$gamma_glutamyl_transpeptidase,
+       sigma.x = 24.30219, sigma.y = 44.88475, alternative = 'less',
+       conf.level = 0.95)
 
 
