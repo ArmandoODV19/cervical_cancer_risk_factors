@@ -197,3 +197,11 @@ z.test(x = sin_bebidas$gamma_glutamyl_transpeptidase,
        conf.level = 0.95)
 
 
+
+#####
+# guardando dataset con rds
+
+
+
+
+
