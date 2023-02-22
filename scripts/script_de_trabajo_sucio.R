@@ -52,7 +52,7 @@ rownames(correlations) <- c('edad', 'numero_de_parejas_sexuales',
 
 
 
-corrplot(correlations, method = 'circle', tl.col = 'black')
+corrplot(correlations, method = 'circle', tl.col = 'black', tl.cex = 0.8)
 
 # generando modelo
 
