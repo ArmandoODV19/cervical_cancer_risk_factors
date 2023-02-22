@@ -101,14 +101,18 @@ sano_vph %>%
   select(dx_cancer) %>%
   summarise(varianza=var(dx_cancer))
 
-# prueba de hipotesis
+# prueba de hipotesis con t
 
 t.test(x = dx_vph$dx_cancer, y = sano_vph$dx_cancer,
        var.equal = FALSE, alternative = 'greater',
        conf.level = 0.95)
 
 
+# prueba de hipotesis con z
 
+z.test(x = dx_vph$dx_cancer, y = sano_vph$dx_cancer,
+       sigma.x= 0.25, sigma.y = 0.0535, alternative = 'greater',
+       conf.level = 0.95)
 
 
 
