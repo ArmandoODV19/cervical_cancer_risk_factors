@@ -201,7 +201,7 @@ z.test(x = sin_bebidas$gamma_glutamyl_transpeptidase,
 #####
 # guardando dataset con rds
 
-
-
+saveRDS(cancer_data, 'clean_data/cancer_data.RDS')
+saveRDS(hepatico_df, 'clean_data/hepatico.RDS')
 
 
