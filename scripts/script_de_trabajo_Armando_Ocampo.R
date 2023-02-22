@@ -114,16 +114,8 @@ z.test(x = dx_vph$dx_cancer, y = sano_vph$dx_cancer,
 ## evaluacion enfermedades hepaticas
 
 
-data <- read.table('raw_data/bupa.data', sep = ',')
-nombre_bupa <- read.table('raw_data/bupa.names', sep = ',')
+hepatico_df <- readRDS('clean_data/hepatico.RDS')
 
-colnames(data) <- c('mean_corpuscular_volume', 'alkaline_phosphotase',
-                    'alanine_aminotransferase', 'aspartate_aminotransferase',
-                    'gamma_glutamyl_transpeptidase',
-                    'alcoholic_beverages_per_day', 'bupa_field')
-
-hepatico_df <- data %>%
-  select(-bupa_field)
 
 ### modelo lineal multivariable tomando 'alcoholic_beverages_per_day'
 # como variable dependiente
